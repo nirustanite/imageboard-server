@@ -1,8 +1,12 @@
 const express = require('express');
-const image = require('./image/model')
+const imageRouter = require('./image/router')
+const bodyParseer = require('body-parser');
 
 const app = express();
 
 const port = process.env.PORT || 4000;
+
+app.use(bodyParseer.json())
+app.use(imageRouter);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
